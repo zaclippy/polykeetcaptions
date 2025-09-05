@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "PolyKeet Captions",
+  "version": "1.0",
+  "description": "Hinglish transliteration and contextual translations for YouTube captions",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["https://www.youtube.com/*", "https://openrouter.ai/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "options_page": "options/options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["hinglish.js", "contentScript.js"],
+      "css": ["styles/tooltip.css"]
+    }
+  ]
+}
